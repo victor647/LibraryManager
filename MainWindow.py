@@ -58,18 +58,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         row_count = self.tblActiveObjects.rowCount()
         self.tblActiveObjects.insertRow(row_count)
         self.tblActiveObjects.setItem(row_count, 0, QTableWidgetItem(obj_name))
-        file_type = FileTools.get_file_type(obj_name)
-        self.tblActiveObjects.setItem(row_count, 1, QTableWidgetItem(file_type))
         # 文件或文件夹大小
-        raw_size, size_text, file_count = FileTools.get_file_size(full_path)
-        size_item = QTableWidgetItem(size_text)
-        size_item.setData(Qt.ItemDataRole.InitialSortOrderRole, raw_size)
+        info = FileTools.get_file_info(full_path)
+        size_item = QTableWidgetItem(info['size_str'])
+        size_item.setData(Qt.ItemDataRole.InitialSortOrderRole, info['raw_size'])
+        self.tblActiveObjects.setItem(row_count, 1, QTableWidgetItem(info['type']))
         self.tblActiveObjects.setItem(row_count, 2, size_item)
-        # 文件夹包含的文件数量
-        if file_count > 0:
-            count_item = QTableWidgetItem()
-            count_item.setData(Qt.ItemDataRole.DisplayRole, file_count)
-            self.tblActiveObjects.setItem(row_count, 3, count_item)
+        # 详细信息
+        self.tblActiveObjects.setItem(row_count, 3, QTableWidgetItem(info['detail']))
 
     # 读取文件夹完毕
     def on_read_folder_finished(self):

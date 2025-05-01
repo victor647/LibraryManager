@@ -102,7 +102,7 @@ class Ui_MainWindow(object):
         item = self.tblActiveObjects.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "大小"))
         item = self.tblActiveObjects.horizontalHeaderItem(3)
-        item.setText(_translate("MainWindow", "文件数"))
+        item.setText(_translate("MainWindow", "信息"))
         self.menu.setTitle(_translate("MainWindow", "编辑"))
         self.mnuRename.setTitle(_translate("MainWindow", "重命名"))
         self.actRemovePrefix.setText(_translate("MainWindow", "去除前缀"))

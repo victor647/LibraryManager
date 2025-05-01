@@ -95,7 +95,7 @@
       </column>
       <column>
        <property name="text">
-        <string>文件数</string>
+        <string>信息</string>
        </property>
       </column>
      </widget>
